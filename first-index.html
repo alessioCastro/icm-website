@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <style>
+                @media (prefers-reduced-motion: reduce) {
+                        .mary-image-container {
+                                animation: none;
+                        }
+                }
+
+                body {
+                        margin: 0;
+                }
+
+                .parallax {
+                        position: relative;
+                        height: 100dvh;
+                        overflow: hidden;
+                }
+
+                /* 🟢 ALTERAÇÃO CHAVE 1: Ajuste no #hero para foco dinâmico */
+                #hero {
+                        background-image: url(./bg.jpg);
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        background-position: center;
+                        height: 100dvh;
+                        display: flex;
+                        justify-content: center;
+                        /* Centraliza verticalmente o #mary-container */
+                        align-items: center;
+
+                        /* Removemos o translate fixo (30px, -70dvh) */
+                        /* Define o ponto onde o zoom de 5x deve focar */
+                        /* AJUSTE ESTE 60% para o centro exato do coração na tela */
+                        transform-origin: 50% 60%;
+                        transform: scale(5);
+                        /* Zoom inicial */
+                }
+
+                .animate-hero {
+                        animation: decreaseScale 7s forwards;
+                }
+
+                .animate-logo {
+                        animation: shrink 7s forwards;
+                }
+
+                /* ALTERAÇÃO 1: Adicionado position: relative */
+                #mary-container {
+                        background-image: url(./mary.png);
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        background-position: center;
+                        width: 900px;
+                        height: 900px;
+                        /* align-self: flex-end; REMOVIDO, pois #hero agora centraliza */
+                        position: relative;
+                }
+
+                #clouds-container {
+                        background-image: url(./clouds.png);
+                        background-repeat: no-repeat;
+                        background-size: 100% 100%;
+                        background-position: center;
+                        width: 100dvw;
+                        height: 300px;
+                        position: absolute;
+                        align-self: flex-end;
+                        bottom: -110px;
+                        right: 0;
+                        opacity: 0.95;
+                }
+
+                #title {
+                        z-index: 99;
+                        position: absolute;
+                }
+
+                /* ALTERAÇÃO 2: Novas regras de posicionamento para #logo */
+                #logo {
+                        z-index: 99;
+                        position: absolute;
+                        /* Posiciona o logo em relação ao #mary-container */
+
+                        /* AJUSTE ESSAS PORCENTAGENS para centralizar no coração! */
+                        top: 58%;
+                        left: 49.1%;
+
+                        width: 350px;
+                        /* Centraliza o logo no ponto (top, left) */
+                        transform: translate(-50%, -50%) scale(0.5);
+                }
+
+                /* ALTERAÇÃO 3: Ajuste nos keyframes para manter a centralização */
+                @keyframes shrink {
+                        from {
+                                left: 49.1%;
+                                top: 58%;
+                                width: 350px;
+                                transform: translate(-50%, -50%) scale(0.5);
+                        }
+
+                        to {
+                                left: 49.1%;
+                                top: 58%;
+                                width: 150px;
+                                transform: translate(-50%, -50%) scale(1);
+                                opacity: 0;
+                        }
+                }
+
+                /* 🟢 ALTERAÇÃO CHAVE 2: Keyframes simplificados */
+                @keyframes decreaseScale {
+                        from {
+                                /* Mantém o estado inicial de zoom */
+                                transform: scale(5);
+                        }
+
+                        to {
+                                /* Volta ao estado normal */
+                                transform: scale(1);
+                        }
+                }
+
+                #hero,
+                #mary-container,
+                #clouds-container {
+                        will-change: transform;
+                }
+
+                #logo {
+                        will-change: transform, width, opacity;
+                }
+        </style>
+
+        <link rel="stylesheet" href="./new-styles.css">
+</head>
+
+<body>
+        <div id="sentinela-header"></div>
+
+        <header id="main-header" class="header">
+
+                <img src="./brasao-icm-cropped.svg" width="50px"
+                        alt="Logotipo da Paróquia Imaculado Coração de Maria Nerópolis">
+
+                <div id="header-title-wrapper">
+                        <span id="header-title">Paróquia Imaculado Coração de Maria</span>
+                        <span id="header-subtitle">Nerópolis - GO</span>
+                </div>
+
+                <nav class="navigation">
+                        <ul>
+                                <li><a href="#hero-section" class="active">Início</a></li>
+                                <li><a href="#" data-action="open-mass">Missas</a></li>
+                                <li><a href="#" data-action="open-confession">Confissões</a></li>
+                        </ul>
+                </nav>
+
+        </header>
+
+        <main>
+
+                <section class="parallax">
+                        <div id="hero">
+                                <div id="mary-container">
+                                        <img id="logo" src="./brasao.png">
+                                </div>
+                                <div id="clouds-container"></div>
+                        </div>
+                </section>
+
+                <section class="tab-menu">
+                        <div class="tab-menu-content">
+                                <ul>
+                                        <li><button class="tab tab-active" data-content="liturgia">Liturgia</button>
+                                        </li>
+                                        <li><button class="tab" data-content="pastorais">Pastorais</button></li>
+                                        <li><button class="tab" data-content="midia">Mídia &amp; Notícias</button></li>
+                                        <li><button class="tab" data-content="contato">Contato</button></li>
+                                        <li><button class="tab" data-content="contato">Contato</button></li>
+                                </ul>
+                        </div>
+                </section>
+
+                <section id="content-container">
+
+                        <div id="content-liturgia" class="content-category-wrapper">
+                                <h2 class="content-wrapper-title">Vida Litúrgica</h2>
+                                <div class="content-wrapper">
+
+                                        <div class="card-sacrament" id="mass-hours-btn" data-action="open-mass">
+                                                <div class="card-body">
+                                                        <h3 class="card-title"><i class="fa-solid fa-church"></i>
+                                                                Horários de Missas</h3>
+                                                        <p class="card-content">Verifique os horários habituais da
+                                                                Matriz e das Capelas.</p>
+                                                </div>
+                                                <div class="card-footer">
+                                                        <span class="card-footer-text">Clique para detalhes</span>
+                                                </div>
+                                        </div>
+
+                                        <div class="card-sacrament" id="special-mass-hours-btn"
+                                                data-action="open-confession">
+                                                <div class="card-body">
+                                                        <h3 class="card-title"><i class="fa-solid fa-cross"></i>
+                                                                Horários de Confissão</h3>
+                                                        <p class="card-content">Terça à Sexta-feira, das 18h às 19h na
+                                                                Matriz.</p>
+                                                </div>
+                                                <div class="card-footer">
+                                                        <span class="card-footer-text">Sujeito à agenda</span>
+                                                </div>
+                                        </div>
+
+                                        <div class="card-sacrament">
+                                                <div class="card-body">
+                                                        <h3 class="card-title"><i class="fa-solid fa-water"></i> Batismo
+                                                        </h3>
+                                                        <p class="card-content">Informações e requisitos para
+                                                                agendamento de batizados.</p>
+                                                </div>
+                                                <div class="card-footer">
+                                                        <span class="card-footer-text">Fale com a secretaria</span>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+                        <div id="content-pastorais" class="content-category-wrapper" hidden="">
+                                <h2 class="content-wrapper-title">Pastorais e Movimentos</h2>
+                                <div class="content-wrapper content-wrapper-full-col">
+                                        <p class="card-content"
+                                                style="text-align: center; padding: 1rem 0; color: #666;">
+                                                Em breve, informações detalhadas sobre as Pastorais e como participar.
+                                        </p>
+                                </div>
+                        </div>
+
+                        <div id="content-midia" class="content-category-wrapper" hidden="">
+                                <h2 class="content-wrapper-title">Mídia e Redes Sociais</h2>
+                                <div class="content-wrapper content-wrapper-lg-3" id="youtube-videos">
+                                        <p class="card-content"
+                                                style="grid-column: 1 / -1; text-align: center; padding: 1rem 0; color: #666;">
+                                                Carregando vídeos recentes do YouTube...
+                                        </p>
+                                </div>
+                        </div>
+
+                        <div id="content-contato" class="content-category-wrapper" hidden="">
+                                <h2 class="content-wrapper-title">Fale Conosco</h2>
+                                <div class="content-wrapper content-wrapper-full-col">
+                                        <div class="contact-info" style="text-align: center; padding: 10px;">
+                                                <h3
+                                                        style="font-family: 'Yeseva One', serif; font-size: 1.2rem; color: var(--primary-blue); margin-bottom: 10px;">
+                                                        Secretaria Paroquial</h3>
+                                                <p style="margin-bottom: 5px;"><i class="fa-solid fa-phone"
+                                                                style="margin-right: 8px; color: var(--tertiary-gold);"></i>
+                                                        (62) 9999-0000</p>
+                                                <p style="margin-bottom: 5px;"><i class="fa-solid fa-envelope"
+                                                                style="margin-right: 8px; color: var(--tertiary-gold);"></i>
+                                                        contato@paroquiaicm.com.br</p>
+                                                <p><i class="fa-solid fa-location-dot"
+                                                                style="margin-right: 8px; color: var(--tertiary-gold);"></i>
+                                                        Rua Principal, 100 - Centro, Nerópolis/GO</p>
+                                        </div>
+                                </div>
+                        </div>
+                </section>
+
+        </main>
+
+        <footer class="footer">
+                <p>© 2025 Paróquia Imaculado Coração de Maria - Todos os direitos reservados.</p>
+        </footer>
+
+        <div class="modal-overlay" id="mass-hours-modal" hidden>
+                <div class="modal-card">
+                        <div class="modal-header">
+                                <h2 class="modal-title">Horários Habituais de Missa</h2>
+                                <button type="button" class="close-btn" onclick="toggleModal('#mass-hours-modal')">
+                                        ×
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                                <div class="modal-content-group">
+                                        <h3>Matriz</h3>
+                                        <ul class="point-list">
+                                                <li>Domingo: 7h, 9h, 19h</li>
+                                                <li>Terça à Sexta: 19h</li>
+                                        </ul>
+                                </div>
+                                <div class="modal-content-group">
+                                        <h3>Capela São Lázaro</h3>
+                                        <ul class="point-list">
+                                                <li>Sábado: 17h</li>
+                                        </ul>
+                                </div>
+                                <div class="modal-content-group">
+                                        <h3>Colégio Rui Barboza (Comunidade Santo Antônio)</h3>
+                                        <ul class="point-list">
+                                                <li>Sábado: 19h</li>
+                                        </ul>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                                <p class="card-footer-text" style="margin-right: auto; font-size: 0.9rem; color: #666;">
+                                        Horários sujeitos a
+                                        alterações.</p>
+                                <button type="button" class="btn-primary" onclick="toggleModal('#mass-hours-modal')">
+                                        FECHAR
+                                </button>
+                        </div>
+                </div>
+        </div>
+
+        <div class="modal-overlay" id="special-mass-hours-modal" hidden>
+                <div class="modal-card">
+                        <div class="modal-header">
+                                <h2 class="modal-title">Horários Habituais de Confissão</h2>
+                                <button type="button" class="close-btn"
+                                        onclick="toggleModal('#special-mass-hours-modal')">
+                                        ×
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                                <div class="modal-content-group">
+                                        <h3>Matriz</h3>
+                                        <ul class="point-list">
+                                                <li>Terça-feira: 18h às 19h</li>
+                                                <li>Quarta-feira: 18h às 19h</li>
+                                                <li>Quinta-feira: 18h às 19h</li>
+                                                <li>Sexta-feira: 18h às 19h</li>
+                                        </ul>
+                                </div>
+                                <div class="modal-content-group">
+                                        <p style="margin: 0;"><strong>Importante:</strong> As confissões ocorrem na
+                                                Matriz durante os
+                                                horários
+                                                indicados, exceto em feriados ou eventos especiais. Chegue com
+                                                antecedência.</p>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                                <p class="card-footer-text" style="margin-right: auto; font-size: 0.9rem; color: #666;">
+                                        Sujeito a alterações conforme a agenda do sacerdote.
+                                </p>
+                                <button type="button" class="btn-primary"
+                                        onclick="toggleModal('#special-mass-hours-modal')">
+                                        ENTENDI
+                                </button>
+                        </div>
+                </div>
+        </div>
+
+        <script>
+                // Função para mostrar ou esconder modais
+                function toggleModal(modalSelector) {
+                        const modal = document.querySelector(modalSelector);
+                        if (modal) {
+                                modal.hidden = !modal.hidden;
+                        } else {
+                                console.error(`Modal com seletor ${modalSelector} não encontrado.`);
+                        }
+                }
+
+                // --- Lógica de Abas e Interações ---
+
+                // Mapeamento de abas e seus conteúdos
+                const tabsMap = {
+                        'liturgia': 'content-liturgia',
+                        'pastorais': 'content-pastorais',
+                        'midia': 'content-midia',
+                        'contato': 'content-contato'
+                };
+
+                // Estado inicial
+                let activeTabContentId = 'content-liturgia';
+
+                function switchTab(targetTab) {
+                        const targetContentId = tabsMap[targetTab.dataset.content];
+
+                        if (!targetContentId || activeTabContentId === targetContentId) return;
+
+                        // 1. Ocultar conteúdo ativo e desativar aba
+                        document.getElementById(activeTabContentId).hidden = true;
+                        document.querySelector(`.tab-active`).classList.remove('tab-active');
+
+                        // 2. Mostrar novo conteúdo e ativar nova aba
+                        document.getElementById(targetContentId).hidden = false;
+                        targetTab.classList.add('tab-active');
+
+                        // 3. Atualizar estado
+                        activeTabContentId = targetContentId;
+
+                        // Ação especial para carregar vídeos
+                        if (targetTab.dataset.content === 'midia') {
+                                loadYoutubeVideos();
+                        }
+                }
+
+                document.body.addEventListener('click', (e) => {
+                        // Ação de abrir Modais pelo menu fixo ou cards
+                        const action = e.target.closest('[data-action]')?.dataset.action;
+                        if (action === 'open-mass') {
+                                e.preventDefault();
+                                toggleModal('#mass-hours-modal');
+                                return;
+                        }
+                        if (action === 'open-confession') {
+                                e.preventDefault();
+                                toggleModal('#special-mass-hours-modal');
+                                return;
+                        }
+
+                        // Ação de trocar Abas
+                        const tabElement = e.target.closest('.tab');
+                        if (tabElement) {
+                                e.preventDefault(); // Impede o scroll para o href
+                                switchTab(tabElement);
+                                return;
+                        }
+                });
+
+                // --- Lógica de Carregamento de Vídeos do YouTube ---
+
+                function loadYoutubeVideos() {
+                        const API_KEY = "AIzaSyBqzCQQqD_mFhcAnZZ-lL-J4skC6NraRBo"; // Sua chave API (deixe vazia para o ambiente de execução)
+                        const CHANNEL_ID = "UCeu2aaql5duJPhbP3F3wjQg"; // Canal de exemplo
+                        const MAX_RESULTS = 6;
+
+                        const container = document.getElementById("youtube-videos");
+                        // Verifica se os vídeos já foram carregados (se existe um iframe)
+                        if (container.querySelector('iframe')) return;
+
+                        // Mostra um indicador de carregamento
+                        container.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 1rem 0; color: #666;">Carregando vídeos recentes do YouTube...</p>';
+
+                        fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&type=video&order=date&maxResults=${MAX_RESULTS}`)
+                                .then(res => {
+                                        if (!res.ok) throw new Error("Falha ao buscar vídeos do YouTube.");
+                                        return res.json();
+                                })
+                                .then(data => {
+                                        container.innerHTML = ''; // Limpa a mensagem de carregamento
+
+                                        if (data.items && data.items.length > 0) {
+                                                data.items.forEach(item => {
+                                                        const videoId = item.id.videoId;
+                                                        const title = item.snippet.title;
+
+                                                        const card = document.createElement("div");
+                                                        card.className = "card-sacrament youtube-card";
+
+                                                        card.innerHTML = `
+                                        <iframe 
+                                        width="100%" 
+                                        height="200"
+                                        src="https://www.youtube.com/embed/$${videoId}"
+                                        title="${title}"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen>
+                                        </iframe>
+                                
+                                        <p class="youtube-card-title">
+                                        ${title}
+                                        </p>
+                                    `;
+                                                        container.appendChild(card);
+                                                });
+                                        } else {
+                                                container.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 1rem 0; color: #666;">Nenhum vídeo encontrado.</p>';
+                                        }
+
+                                })
+                                .catch(err => {
+                                        console.error("Erro ao carregar vídeos:", err);
+                                        container.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 1rem 0; color: red;">Erro ao carregar vídeos. Tente novamente mais tarde.</p>';
+                                });
+                }
+
+        </script>
+
+        <script>
+                const hero = document.getElementById('hero');
+                const mary = document.getElementById('mary-container');
+                const clouds = document.getElementById('clouds-container');
+
+                // Lista de elementos ativos (quando visíveis)
+                let active = false;
+
+                // 1) Ativar/desativar quando o hero entra/saí da viewport
+                const io = new IntersectionObserver((entries) => {
+                        active = entries[0].isIntersecting;
+                }, { threshold: 0 });
+
+                io.observe(hero);
+
+                // 2) Loop de animação leve
+                function loop() {
+                        if (active) {
+                                const rect = hero.getBoundingClientRect();
+                                const scroll = -rect.top;
+
+                                hero.style.transform = `translate3d(0, ${scroll * 0.04}px, 0)`;
+                                mary.style.transform = `translate3d(0, ${scroll * 0.07}px, 0)`;
+                                clouds.style.transform = `translate3d(0, ${scroll * -0.10}px, 0)`;
+                        }
+
+                        requestAnimationFrame(loop);
+                }
+        </script>
+
+        <script>
+                const header = document.querySelector('#main-header');
+                const sentinela = document.querySelector('.tab-menu');
+
+                const observer = new IntersectionObserver(entries => {
+                        entries.forEach(entry => {
+                                const visivel = entry.isIntersecting;
+
+                                console.log(visivel)
+
+                                if (visivel) {
+                                        header.classList.remove('header-scrolled');
+                                } else {
+                                        header.classList.add('header-scrolled');
+                                }
+                        });
+                }, {
+                        rootMargin: "-50% 0px 0px 0px" // ativa assim que subir 1px
+                });
+
+                observer.observe(sentinela);
+
+        </script>
+
+        <script>
+                window.onload = () => {
+                        const logo = document.querySelector('#logo');
+
+                        setTimeout(() => {
+
+                                hero.classList.add('animate-hero');
+                                logo.classList.add('animate-logo');
+
+                                const heroAnimation = document.querySelector('.animate-hero');
+
+                                heroAnimation.addEventListener('animationend', () => {
+                                        // Descomente a linha abaixo para iniciar o parallax após a animação de zoom
+                                        loop();
+                                });
+
+                        }, 3000);
+                };
+        </script>
+</body>
+
+</html>

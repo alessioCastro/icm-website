@@ -1,0 +1,120 @@
+/* Overlay (fundo escurecido) */
+.modal-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Card principal */
+.modal-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    overflow: hidden;
+    margin: 16px;
+}
+
+/* Cabeçalho */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: var(--primary-blue);
+    /* azul genérico */
+    color: #ffffff;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+/* Botão fechar */
+.close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.close-btn:hover {
+    color: #d1d5db;
+}
+
+/* Corpo */
+.modal-body {
+    padding: 24px;
+    color: #243d69;
+}
+
+/* Rodapé */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 24px;
+    background-color: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    gap: 12px;
+}
+
+/* Botões */
+.btn {
+    padding: 8px 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+/* Botão OK */
+.btn-ok {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+    border: 1px solid var(--primary-blue);
+}
+
+.btn-ok:hover {
+    background-color: #1e40af;
+}
+
+/* Botão Principal */
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+    border: 1px solid var(--primary-blue);
+}
+
+.btn-primary:hover {
+    background-color: #1e40af;
+}
+
+.point-list {
+    list-style: disc;
+    padding-inline-start: 16px;
+}
+
+#mass-hours-modal .point-list {
+    margin-left: 20px;
+}
+
+#mass-hours-modal .modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+#mass-hours-modal h3 {
+    margin-bottom: 10px;
+}

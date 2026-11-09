@@ -1,0 +1,597 @@
+/* ---------------------------------
+        1. CONFIGURAÇÃO GERAL
+        --------------------------------- */
+[hidden] {
+    display: none !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+/* Variáveis CSS necessárias para as seções */
+:root {
+    --primary-blue: #1f3d8e;
+    --secondary-beige: #f4f5f4;
+    --tertiary-gold: #ceaf6e;
+    --text-dark: #374151;
+    --text-light: #838eb3;
+    --background-body: #fff;
+}
+
+/* Estilos Globais */
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color: var(--background-body);
+    color: var(--text-dark);
+    height: 100dvh;
+    /* Permite o scroll na página inteira */
+    scroll-behavior: smooth;
+}
+
+/* Estilos gerais do MAIN */
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------------------------------
+        2. HEADER FIXO
+        --------------------------------- */
+#sentinela-header {
+    position: absolute;
+    top: 120px;
+    width: 1px;
+    height: 1px;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    color: var(--primary-blue);
+    background-color: rgba(31, 61, 142, 0.0);
+    /* Inicialmente quase transparente */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    will-change: background-color; /* dica para GPU */
+}
+
+.header-scrolled {
+    color: white;
+    background-color: var(--primary-blue);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 640px) {
+    .header {
+        padding: 10px 30px;
+    }
+}
+
+#header-title-wrapper {
+    font-family: 'Yeseva One', serif;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+#header-title {
+    font-size: 1.2rem;
+}
+
+#header-subtitle {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.navigation {
+    margin-left: auto;
+    /* Esconde no mobile */
+    display: none;
+}
+
+/* Mostra a navegação em telas maiores */
+@media (min-width: 640px) {
+    .navigation {
+        display: block;
+    }
+}
+
+.navigation ul {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navigation a {
+    font-size: 1rem;
+    font-weight: 500;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-bottom-color 0.2s;
+}
+
+.navigation a:hover,
+.navigation .active {
+    color: var(--tertiary-gold);
+    border-bottom-color: var(--tertiary-gold);
+}
+
+/* ---------------------------------
+3. HERO SECTION E PARALLAX
+--------------------------------- */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+
+    /* Configurações de fundo para o efeito parallax */
+    background-image: url(./bg.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Necessário para o efeito 3D (Parallax) */
+    transform-style: preserve-3d;
+    perspective: 1px;
+}
+
+/* Nuvens = transição para o conteúdo (Camada Parallax) */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: auto 0 100px 0;
+    height: 200px;
+    z-index: 4;
+    will-change: transform;
+    background-image: url(./clouds.png);
+    background-size: cover;
+    background-position: 0;
+    background-repeat: no-repeat;
+
+    /* Transformação de profundidade (Parte do Parallax) */
+    transform: translateZ(-0.05px) scale(1.3);
+    opacity: 0.97;
+}
+
+/* Gradiente suave para transição perfeita (Estático) */
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 180px;
+    width: 100%;
+    z-index: 3;
+
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.7) 70%,
+            #fff 100%);
+}
+
+/* Animação de "respiração" (Parallax) */
+@keyframes breathe {
+    0% {
+        transform:
+            translateY(calc(var(--scroll) + 0px)) translateZ(-0.20px) scale(1.15);
+    }
+
+    50% {
+        transform:
+            translateY(calc(var(--scroll) - 8px)) translateZ(-0.20px) scale(1.18);
+    }
+
+    100% {
+        transform:
+            translateY(calc(var(--scroll) + 0px)) translateZ(-0.20px) scale(1.15);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mary-image-container {
+        animation: none;
+    }
+}
+
+/* ---------------------------------
+4. MENU DE ABAS (STICKY)
+--------------------------------- */
+.tab-menu {
+    position: sticky;
+    top: 60px;
+    /* Abaixo do header fixo */
+    z-index: 40;
+    background-color: var(--secondary-beige);
+    border-bottom: 2px solid #ddd;
+    padding: 14px 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Oculta a barra de rolagem horizontal */
+.tab-menu::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-menu-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tab-menu-content ul {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    justify-content: space-between;
+}
+
+@media (min-width: 640px) {
+    .tab-menu-content ul {
+        gap: 2rem;
+    }
+}
+
+.tab {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    padding: 0.6rem 0.5rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    /* Evita quebras de linha */
+    transition: all 0.2s;
+}
+
+.tab-active {
+    color: var(--primary-blue);
+    border-bottom-color: var(--tertiary-gold);
+    cursor: default;
+}
+
+.tab:not(.tab-active):hover {
+    color: var(--primary-blue);
+}
+
+/* ---------------------------------
+5. CONTEÚDO PRINCIPAL (Cards)
+--------------------------------- */
+#content-container {
+    padding: 30px 20px;
+    flex-grow: 1;
+    background-color: #f9f9f9;
+}
+
+.content-category-wrapper {
+    max-width: 1000px;
+    margin: 0 auto 30px auto;
+    border: 3px solid var(--tertiary-gold);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper-title {
+    background-color: var(--primary-blue);
+    color: white;
+    font-family: 'Yeseva One', serif;
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 12px 10px;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .content-wrapper-title {
+        font-size: 1.6rem;
+    }
+}
+
+.content-wrapper {
+    border: 3px solid var(--tertiary-gold);
+    padding: 20px;
+    display: grid;
+    /* Grid responsivo: 1 coluna no mobile, 2+ no desktop */
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .content-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .content-wrapper-lg-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .content-wrapper-full-col>* {
+        grid-column: 1 / -1;
+    }
+}
+
+.card-sacrament {
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #ddd;
+}
+
+.card-sacrament:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    background-color: white;
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.card-title {
+    color: var(--primary-blue);
+    font-family: 'Yeseva One', serif;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.card-title i {
+    margin-right: 10px;
+    color: var(--tertiary-gold);
+}
+
+.card-content {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.card-footer {
+    background: var(--secondary-beige);
+    padding: 10px 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.card-footer-text {
+    color: var(--primary-blue);
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+/* Estilos específicos para o conteúdo de Mídia */
+.youtube-card {
+    background-color: #fefefe;
+    border: 1px solid #e0e0e0;
+}
+
+.youtube-card-title {
+    padding: 10px;
+    font-size: 0.9rem;
+    color: var(--primary-blue);
+}
+
+/* Estilos do Contato */
+.contact-info {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+/* ---------------------------------
+        6. RODAPÉ
+        --------------------------------- */
+footer {
+    background-color: var(--primary-blue);
+    /* Cinza escuro */
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    margin-top: auto;
+    position: relative;
+}
+
+/* Camada de estrelas */
+footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        /* primeira leva */
+        radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+        radial-gradient(1px 1px at 30% 80%, #fff, transparent),
+        radial-gradient(1px 1px at 50% 50%, #fff, transparent),
+        radial-gradient(1px 1px at 70% 10%, #fff, transparent),
+        radial-gradient(1px 1px at 90% 70%, #fff, transparent),
+        radial-gradient(2px 2px at 20% 40%, #fff, transparent),
+        radial-gradient(2px 2px at 40% 60%, #fff, transparent),
+        radial-gradient(2px 2px at 60% 30%, #fff, transparent),
+        radial-gradient(2px 2px at 80% 90%, #fff, transparent),
+        radial-gradient(2px 2px at 95% 15%, #fff, transparent),
+        /* segunda leva duplicada */
+        radial-gradient(1px 1px at 15% 25%, #fff, transparent),
+        radial-gradient(1px 1px at 35% 85%, #fff, transparent),
+        radial-gradient(1px 1px at 55% 55%, #fff, transparent),
+        radial-gradient(1px 1px at 75% 15%, #fff, transparent),
+        radial-gradient(1px 1px at 95% 75%, #fff, transparent),
+        radial-gradient(2px 2px at 25% 45%, #fff, transparent),
+        radial-gradient(2px 2px at 45% 65%, #fff, transparent),
+        radial-gradient(2px 2px at 65% 35%, #fff, transparent),
+        radial-gradient(2px 2px at 85% 95%, #fff, transparent),
+        radial-gradient(2px 2px at 5% 20%, #fff, transparent),
+        /* terceira leva */
+        radial-gradient(1px 1px at 12% 12%, #fff, transparent),
+        radial-gradient(1px 1px at 22% 72%, #fff, transparent),
+        radial-gradient(1px 1px at 42% 32%, #fff, transparent),
+        radial-gradient(1px 1px at 62% 82%, #fff, transparent),
+        radial-gradient(1px 1px at 82% 52%, #fff, transparent),
+        radial-gradient(2px 2px at 18% 28%, #fff, transparent),
+        radial-gradient(2px 2px at 38% 68%, #fff, transparent),
+        radial-gradient(2px 2px at 58% 38%, #fff, transparent),
+        radial-gradient(2px 2px at 78% 88%, #fff, transparent),
+        radial-gradient(2px 2px at 98% 18%, #fff, transparent);
+    background-size: 100% 100%;
+    animation: twinkle 8s infinite alternate;
+    z-index: 0;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: 0.6;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ---------------------------------
+        7. MODAIS
+        --------------------------------- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-card {
+    background: white;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title {
+    font-family: 'Yeseva One', serif;
+    font-size: 1.4rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-content-group {
+    margin-bottom: 20px;
+}
+
+.modal-content-group h3 {
+    font-family: 'Yeseva One', serif;
+    color: var(--tertiary-gold);
+    font-size: 1.2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.point-list li {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding-left: 10px;
+    position: relative;
+}
+
+.point-list li::before {
+    content: '•';
+    color: var(--primary-blue);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--secondary-beige);
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #2e53a9;
+}

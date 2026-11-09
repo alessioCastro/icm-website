@@ -1,0 +1,65 @@
+footer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: #cdd7f6;
+    background-image: url(./footer-bg.jpg);
+    background-position: center;
+    overflow: hidden;
+}
+
+/* Camada de estrelas */
+footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        /* primeira leva */
+        radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+        radial-gradient(1px 1px at 30% 80%, #fff, transparent),
+        radial-gradient(1px 1px at 50% 50%, #fff, transparent),
+        radial-gradient(1px 1px at 70% 10%, #fff, transparent),
+        radial-gradient(1px 1px at 90% 70%, #fff, transparent),
+        radial-gradient(2px 2px at 20% 40%, #fff, transparent),
+        radial-gradient(2px 2px at 40% 60%, #fff, transparent),
+        radial-gradient(2px 2px at 60% 30%, #fff, transparent),
+        radial-gradient(2px 2px at 80% 90%, #fff, transparent),
+        radial-gradient(2px 2px at 95% 15%, #fff, transparent),
+        /* segunda leva duplicada */
+        radial-gradient(1px 1px at 15% 25%, #fff, transparent),
+        radial-gradient(1px 1px at 35% 85%, #fff, transparent),
+        radial-gradient(1px 1px at 55% 55%, #fff, transparent),
+        radial-gradient(1px 1px at 75% 15%, #fff, transparent),
+        radial-gradient(1px 1px at 95% 75%, #fff, transparent),
+        radial-gradient(2px 2px at 25% 45%, #fff, transparent),
+        radial-gradient(2px 2px at 45% 65%, #fff, transparent),
+        radial-gradient(2px 2px at 65% 35%, #fff, transparent),
+        radial-gradient(2px 2px at 85% 95%, #fff, transparent),
+        radial-gradient(2px 2px at 5% 20%, #fff, transparent),
+        /* terceira leva */
+        radial-gradient(1px 1px at 12% 12%, #fff, transparent),
+        radial-gradient(1px 1px at 22% 72%, #fff, transparent),
+        radial-gradient(1px 1px at 42% 32%, #fff, transparent),
+        radial-gradient(1px 1px at 62% 82%, #fff, transparent),
+        radial-gradient(1px 1px at 82% 52%, #fff, transparent),
+        radial-gradient(2px 2px at 18% 28%, #fff, transparent),
+        radial-gradient(2px 2px at 38% 68%, #fff, transparent),
+        radial-gradient(2px 2px at 58% 38%, #fff, transparent),
+        radial-gradient(2px 2px at 78% 88%, #fff, transparent),
+        radial-gradient(2px 2px at 98% 18%, #fff, transparent);
+    background-size: 100% 100%;
+    animation: twinkle 8s infinite alternate;
+    z-index: 0;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: 0.6;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Início | Paróquia Imaculado Coração de Maria</title>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #1a2a47; /* Azul Profundo */
+      --accent: #b08d57;  /* Dourado Litúrgico */
+      --bg-light: #fdfcf8; /* Papel Antigo/Creme */
+      --text: #2c2c2c;
+      --white: #ffffff;
+      --shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .serif-title {
+      font-family: 'Cinzel', serif;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .italic-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* --- PARALLAX UTILS --- */
+    .parallax-window {
+      min-height: 400px;
+      background: transparent;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* --- REVEAL ANIMATION --- */
+    .reveal {
+      position: relative;
+      transform: translateY(50px);
+      opacity: 0;
+      transition: all 1s ease;
+    }
+
+    .reveal.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* --- HERO SECTION COM PARALLAX --- */
+    .hero-container {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120%; /* Maior que a tela para o movimento */
+      background: linear-gradient(rgba(26, 42, 71, 0.7), rgba(26, 42, 71, 0.7)), 
+                  url('https://images.unsplash.com/photo-1548625361-195fe6115887?q=80&w=2000') center/cover no-repeat;
+      z-index: 1;
+      will-change: transform;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 1000px;
+      z-index: 2;
+      color: var(--white);
+    }
+
+    .hero-content h1 {
+      color: var(--white);
+      font-size: clamp(2.5rem, 10vw, 5.5rem);
+      margin-bottom: 20px;
+      line-height: 1.1;
+      font-weight: 900;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .hero-content p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      letter-spacing: 5px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 16px 40px;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid var(--accent);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 0; height: 100%;
+      background: var(--accent);
+      transition: 0.4s;
+      z-index: -1;
+    }
+
+    .btn:hover::before { width: 100%; }
+    .btn:hover { color: var(--white) !important; }
+
+    .btn-gold { background: var(--accent); color: var(--white); }
+    .btn-outline { color: var(--white); }
+
+    /* --- SECTION SHARED --- */
+    section { padding: 140px 0; position: relative; background: var(--bg-light); }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-header .subtitle {
+      color: var(--accent);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      display: block;
+    }
+
+    .section-header h2 {
+      font-size: 2.8rem;
+      margin-top: 10px;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* --- WELCOME BLOCK --- */
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .image-composition {
+      position: relative;
+    }
+
+    .main-img-frame {
+      padding: 25px;
+      border: 1px solid var(--accent);
+      position: relative;
+      background: var(--white);
+      z-index: 2;
+    }
+
+    .main-img-frame img {
+      width: 100%;
+      display: block;
+      filter: grayscale(30%) sepia(10%);
+      transition: 0.5s;
+    }
+
+    .main-img-frame:hover img { filter: grayscale(0%) sepia(0%); }
+
+    .floating-card {
+      position: absolute;
+      bottom: -50px;
+      right: -50px;
+      background: var(--primary);
+      color: var(--white);
+      padding: 40px;
+      width: 280px;
+      box-shadow: var(--shadow);
+      z-index: 3;
+    }
+
+    /* --- SPIRITUALITY SECTION --- */
+    .spirituality {
+      background: #f4f2eb;
+      overflow: hidden;
+    }
+
+    .spirit-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+    }
+
+    .spirit-card {
+      background: var(--white);
+      padding: 60px 45px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-top: 4px solid transparent;
+      transition: 0.4s;
+    }
+
+    .spirit-card:hover { 
+      transform: translateY(-15px);
+      border-top: 4px solid var(--accent);
+    }
+
+    .spirit-card i {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 30px;
+    }
+
+    /* --- QUOTE SECTION (STATIC PARALLAX) --- */
+    .parallax-quote {
+      height: 500px;
+      background: linear-gradient(rgba(26, 42, 71, 0.85), rgba(26, 42, 71, 0.85)), 
+                  url('https://images.unsplash.com/photo-1438032005730-c779502df39b?q=80&w=2000') fixed center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .parallax-quote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-style: italic;
+      max-width: 1000px;
+      margin: 0 auto;
+      line-height: 1.3;
+      padding: 0 40px;
+    }
+
+    /* --- SCHEDULE SECTION --- */
+    .schedule {
+      background: var(--white);
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 60px;
+    }
+
+    .day-box {
+      border-left: 3px solid var(--accent);
+      padding: 10px 0 10px 35px;
+    }
+
+    .day-box h3 {
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+    }
+
+    .time-entry {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 8px;
+    }
+
+    /* --- CTA SECTION --- */
+    .cta-section {
+      background-color: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    /* --- ORNAMENT --- */
+    .ornament-end {
+      text-align: center;
+      padding: 100px 0;
+      color: var(--accent);
+      font-size: 3rem;
+      opacity: 0.4;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+      40% {transform: translateY(-10px);}
+      60% {transform: translateY(-5px);}
+    }
+
+    @media (max-width: 1024px) {
+      .welcome-grid, .schedule-grid { grid-template-columns: 1fr; gap: 60px; }
+      .hero-content h1 { font-size: 3.5rem; }
+      .floating-card { position: static; width: 100%; margin-top: 30px; }
+      .parallax-quote { background-attachment: scroll; } /* Mobile performance */
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO SECTION COM EFEITO PARALLAX JS -->
+  <header class="hero-container">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-content" id="heroContent">
+      <p class="reveal active">Uma Comunidade de Fé em Nerópolis</p>
+      <h1 class="reveal active">Paróquia Imaculado Coração de Maria</h1>
+      <div class="italic-text reveal active" style="font-size: 1.8rem; margin-top: 15px;">
+        Acolhendo corações, transformando vidas sob o manto de Maria.
+      </div>
+      <div class="hero-btns reveal active" style="margin-top: 50px;">
+        <a href="#welcome" class="btn btn-gold">Nossa História</a>
+        <a href="#horarios" class="btn btn-outline">Horários de Missa</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+  </header>
+
+  <!-- WELCOME SECTION -->
+  <section id="welcome" class="container reveal">
+    <div class="welcome-grid">
+      <div class="image-composition">
+        <div class="main-img-frame">
+          <img src="https://www.diocesedeanapolis.org.br/wp-content/uploads/2020/01/Paroq-Imaculado-Ner%C3%B3polis.jpg" alt="Fachada da Paróquia">
+        </div>
+        <div class="floating-card" id="floatCard">
+          <h4 class="serif-title" style="color: var(--accent); font-size: 0.9rem; margin-bottom: 15px;">Consagração</h4>
+          <p class="italic-text" style="font-size: 1rem; line-height: 1.5;">"O meu Imaculado Coração será o teu refúgio e o caminho que te conduzirá até Deus."</p>
+        </div>
+      </div>
+      <div class="welcome-text">
+        <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+          <span class="subtitle">Bem-vindo à nossa casa</span>
+          <h2>Uma Família em Cristo</h2>
+        </div>
+        <p>
+          Situada no coração vibrante de Nerópolis, a <strong>Paróquia Imaculado Coração de Maria</strong> não é apenas um marco arquitetônico, mas o centro pulsante da vida espiritual de nossa cidade. Nossa história é tecida com fios de fé, suor e oração de gerações que viram nesta casa de Deus um porto seguro.
+        </p>
+        <p>
+          Ser parte desta paróquia significa caminhar juntos. Aqui, a tradição católica se une ao fervor missionário. Sob a intercessão da Virgem Maria, buscamos ser uma "Igreja em Saída", acolhendo os que sofrem, celebrando com os que se alegram e formando cristãos comprometidos com o Reino de Deus.
+        </p>
+        <p>
+          Seja você um paroquiano de longa data, um visitante em busca de paz ou alguém que deseja redescobrir a fé, nossas portas e corações estão abertos. Há um lugar reservado para você em nossa mesa eucarística e em nossas diversas pastorais.
+        </p>
+        <div style="margin-top: 45px; display: flex; align-items: center; gap: 25px;">
+          <div style="width: 60px; height: 60px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+            <i class="fa-solid fa-cross"></i>
+          </div>
+          <div class="signature">
+            <span style="display: block; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px;">Pe. Bruno Torres</span>
+            <span class="italic-text" style="color: var(--accent); font-size: 1.1rem;">Pároco Responsável</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPIRITUALITY SECTION -->
+  <section class="spirituality">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="subtitle">Nossa Essência</span>
+        <h2>Pilares da Vida Paroquial</h2>
+      </div>
+      <div class="spirit-cards">
+        <div class="spirit-card reveal">
+          <i class="fa-solid fa-fire-burner"></i>
+          <h3>Fervor Eucarístico</h3>
+          <p>A Santa Missa é o cume de nossa vida comunitária. Adoramos a Jesus Sacramentado com a dignidade e o silêncio que o mistério exige de cada um de nós.</p>
+        </div>
+        <div class="spirit-card reveal" style="transition-delay: 0.2s;">
+          <i class="fa-solid fa-rosary"></i>
+          <h3>Devoção Mariana</h3>
+          <p>Como filhos de Maria, honramos seu Coração Imaculado, buscando imitar diariamente suas virtudes de humildade, silêncio e obediência total ao Pai.</p>
+        </div>
+        <div class="spirit-card reveal" style="transition-delay: 0.4s;">
+          <i class="fa-solid fa-people-group"></i>
+          <h3>Fraternidade</h3>
+          <p>Ninguém caminha sozinho. Nossos grupos de oração e pastorais são espaços de partilha, apoio mútuo e o florescer de verdadeiras amizades cristãs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARALLAX QUOTE -->
+  <div class="parallax-quote">
+    <div class="container reveal">
+      <i class="fa-solid fa-quote-left" style="font-size: 3.5rem; color: var(--accent); margin-bottom: 40px; display: block; text-align: center;"></i>
+      <blockquote>
+        "Onde quer que haja um cristão, ali deve estar presente a caridade; onde quer que haja caridade, ali está Deus."
+      </blockquote>
+      <div class="quote-author" style="margin-top: 40px; letter-spacing: 5px; color: var(--accent); text-transform: uppercase; font-weight: bold; font-size: 1rem;">
+        — São João Crisóstomo
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHEDULE SECTION -->
+  <section id="horarios" class="schedule">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="subtitle">Encontre-se com o Senhor</span>
+        <h2>Horários de Celebração</h2>
+      </div>
+      <div class="schedule-grid reveal">
+        <div class="day-box">
+          <h3>Santas Missas</h3>
+          <div class="time-entry"><span>Terça a Sexta</span> <strong>19:30</strong></div>
+          <div class="time-entry"><span>Sábado</span> <strong>19:00</strong></div>
+          <div class="time-entry"><span>Domingo</span> <strong>08:00 | 10:00 | 19:00</strong></div>
+        </div>
+        <div class="day-box">
+          <h3>Confissões</h3>
+          <div class="time-entry"><span>Quarta e Quinta</span> <strong>15:00 - 17:30</strong></div>
+          <div class="time-entry"><span>Sexta-feira</span> <strong>09:00 - 11:00</strong></div>
+          <p style="font-size: 0.85rem; margin-top: 15px; color: #888;">*Pode também solicitar agendamento na secretaria paroquial.</p>
+        </div>
+        <div class="day-box">
+          <h3>Adoração</h3>
+          <div class="time-entry"><span>Quinta-feira</span> <strong>08:00 - 19:00</strong></div>
+          <div class="time-entry"><span>1ª Sexta do Mês</span> <strong>18:00</strong></div>
+          <p style="font-size: 0.85rem; margin-top: 15px; color: #888;">Bênção do Santíssimo sempre às quintas antes da Missa das 19:30.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section reveal">
+    <div class="container" style="max-width: 800px;">
+      <h2 style="color: white; margin-bottom: 25px;">Faça Parte da Nossa História</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 45px; opacity: 0.9;">Deseja servir numa pastoral, batizar o seu filho ou realizar o seu matrimônio? A nossa secretaria está pronta para acolher você e a sua família.</p>
+      <a href="#" class="btn btn-gold" style="border-color: var(--accent); color: white;">Entre em Contacto Agora</a>
+    </div>
+  </section>
+
+  <!-- DECORATIVE END -->
+  <div class="ornament-end reveal">
+    <i class="fa-solid fa-leaf"></i>
+    <i class="fa-solid fa-cross" style="margin: 0 40px; font-size: 4rem;"></i>
+    <i class="fa-solid fa-leaf"></i>
+  </div>
+
+  <footer style="background: #0d1526; color: rgba(255,255,255,0.4); padding: 60px 0; text-align: center; font-size: 0.85rem; letter-spacing: 2px;">
+    <div class="container">
+      <p style="margin-bottom: 10px;">© 2025 Paróquia Imaculado Coração de Maria - Nerópolis/GO</p>
+      <p>AD MAIOREM DEI GLORIAM</p>
+    </div>
+  </footer>
+
+  <script>
+    // --- PARALLAX HERO LOGIC ---
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+      const heroBg = document.getElementById('heroBg');
+      const heroContent = document.getElementById('heroContent');
+      const floatCard = document.getElementById('floatCard');
+
+      // Move o fundo mais devagar (parallax)
+      heroBg.style.transform = 'translateY(' + (scrolled * 0.5) + 'px)';
+      
+      // Move o conteúdo para cima suavemente
+      heroContent.style.transform = 'translateY(' + (scrolled * 0.2) + 'px)';
+      heroContent.style.opacity = 1 - (scrolled / 700);
+
+      // Pequeno efeito no card flutuante durante o scroll inicial
+      if (scrolled < 1000) {
+        floatCard.style.transform = 'translateY(' + (scrolled * -0.1) + 'px)';
+      }
+    });
+
+    // --- REVEAL ON SCROLL LOGIC ---
+    function reveal() {
+      var reveals = document.querySelectorAll(".reveal");
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add("active");
+        }
+      }
+    }
+
+    window.addEventListener("scroll", reveal);
+    // Executa uma vez no load para itens iniciais
+    window.onload = reveal;
+  </script>
+
+</body>
+</html>

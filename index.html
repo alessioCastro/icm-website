@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta name="robots" content="noindex, nofollow">
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Paróquia Imaculado Coração de Maria</title>
+
+
+  <meta name="description"
+    content="Site oficial da Paróquia Imaculado Coração de Maria. Horários de missas, confissão, sacramentos, eventos e vida paroquial.">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+  <!-- Para Safari iOS -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Para outros navegadores -->
+  <meta name="theme-color" content="#b4d5e7">
+
+
+  <link rel="stylesheet" href="./styles.css">
+
+</head>
+
+<body class="scroll-lock">
+
+  <header hidden>
+    <img id="header-logo" src="./novo-logo-icm.webp" alt="">
+    <nav class="tab-menu">
+      <ul class="tab-menu-content">
+        <li><button class="nav tab tab-active" data-content="inicio">Início</button></li>
+        <li><button class="nav tab" data-content="horarios">Horários Essenciais</button></li>
+        <li><button class="nav tab" data-content="devocoes">Devoções</button></li>
+        <li><button class="nav tab" data-content="pastorais">Pastorais</button></li>
+        <li><button class="nav tab" data-content="midia">Mídia & Notícias</button></li>
+        <li><button class="nav tab" data-content="contato">Contato</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-wrapper">
+    <div class="hero-zoom">
+      <div class="hero">
+        <div id="lock-overlay"></div>
+
+        <div class="mary-container">
+          <img src="./novo-logo-icm.png_20153fda.png" alt="" style="position: absolute;
+    top: 57.5%;
+    left: 51.5%;
+    width: 140px;
+    transform: translate(-50%, -50%);">
+          <img class="logo" src="./novo-logo-icm.webp" alt="">
+          <!-- <div class="clouds-container"></div> -->
+        </div>
+
+        <div class="hero-fade"></div>
+        <h2 id="hero-title">
+          <span class="word word--paroquia">Paróquia</span>
+
+          <span class="word word--imaculado">
+            <span class="letter letter--ornamental">I</span>maculado
+          </span>
+
+          <span class="word word--coracao">
+            <span class="letter letter--ornamental">C</span>oraçã<span class="letter letter--ornamental">O</span>
+          </span>
+
+          <span class="word word--de-maria">
+            <span class="letter letter--ornamental">d</span>e Maria
+          </span>
+        </h2>
+        <img id="hero-logo" src="./novo-logo-icm.webp" alt="" />
+        <svg id="hero-cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor">
+          <path
+            d="M200,74H160a2,2,0,0,1-2-2V32a14,14,0,0,0-14-14H112A14,14,0,0,0,98,32V72a2,2,0,0,1-2,2H56A14,14,0,0,0,42,88v32a14,14,0,0,0,14,14H96a2,2,0,0,1,2,2v88a14,14,0,0,0,14,14h32a14,14,0,0,0,14-14V136a2,2,0,0,1,2-2h40a14,14,0,0,0,14-14V88A14,14,0,0,0,200,74Zm2,46a2,2,0,0,1-2,2H160a14,14,0,0,0-14,14v88a2,2,0,0,1-2,2H112a2,2,0,0,1-2-2V136a14,14,0,0,0-14-14H56a2,2,0,0,1-2-2V88a2,2,0,0,1,2-2H96a14,14,0,0,0,14-14V32a2,2,0,0,1,2-2h32a2,2,0,0,1,2,2V72a14,14,0,0,0,14,14h40a2,2,0,0,1,2,2Z" />
+        </svg>
+        <p id="hero-text">"Fazei tudo o que Ele vos disser"<br>(Jo 2,5)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO DA PARÓQUIA -->
+  <main hidden>
+
+    <!-- 3. MENU DE ABAS (Fixo ao rolar) -->
+    <section class="tab-menu">
+      <ul class="tab-menu-content">
+        <li><button class="tab tab-active" data-content="inicio">Início</button></li>
+        <li><button class="tab" data-content="horarios">Horários Essenciais</button></li>
+        <li><button class="tab" data-content="devocoes">Devoções</button></li>
+        <li><button class="tab" data-content="pastorais">Pastorais</button></li>
+        <li><button class="tab" data-content="midia">Mídia & Notícias</button></li>
+        <li><button class="tab" data-content="contato">Contato</button></li>
+      </ul>
+    </section>
+
+    <!-- 4. CONTEÚDO PRINCIPAL -->
+    <section id="content-container">
+
+      <!-- CONTEÚDO 1: INÍCIO -->
+      <div id="content-inicio">
+        <div class="content-margin">
+          <div id="welcome-container">
+            <div id="welcome-message">
+              <p>Bem-vindo ao site oficial da nossa paróquia</p>
+              <h2>Imaculado Coração de Maria</h2>
+              <p>Uma comunidade de fé em Nerópolis</p>
+            </div>
+            <img id="welcome-image" src="./paroquia.jpg">
+          </div>
+
+          <div id="mensagem">
+            <div class="intro-container">
+              <div class="intro-grid">
+                <div class="intro-image-wrapper">
+
+                  <img src="./altar.webp" alt="Pároco" class="intro-image">
+
+
+                  <div class="floating-card" id="floatCard">
+                    <h4 class="serif-title"
+                      style="color: var(--tertiary-gold); font-size: 0.9rem; margin-bottom: 15px;">
+                      Consagração</h4>
+                    <p class="italic-text" style="font-size: 1rem; line-height: 1.5;">"O meu Imaculado Coração será o
+                      teu
+                      refúgio e o caminho que te conduzirá até Deus."</p>
+                  </div>
+                </div>
+
+                <div class="intro-text">
+                  <h2>Uma Igreja de <br><span class="text-gold">Portas Abertas</span></h2>
+                  <p class="italic-text" style="font-size: 1.2rem; color: var(--tertiary-gold);">
+                    "Fazei tudo o que Ele vos disser" (Jo 2,5)
+                  </p>
+                  <p>
+                    Nossa Paróquia Imaculado Coração de Maria é mais do que um edifício; é uma família espiritual onde
+                    cada batizado encontra seu lugar.
+                  </p>
+                  <p>
+                    Aqui, buscamos viver o Evangelho sob o olhar terno de nossa Mãe Santíssima, acolhendo a todos com o
+                    mesmo amor que ela dedica a seu Filho.
+                  </p>
+                  <div class="block-quote">
+                    "Aqui você não é apenas um visitante, mas parte viva do Corpo de Cristo."
+                  </div>
+                  <div class="signature">
+                    <div class="line"></div>
+                    <span>Pe. Bruno Torres, Pároco</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3827.538389980298!2d-49.2315162!3d-16.3974608!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935e84e3053a03cf%3A0x1240b1064bda6d64!2sPar%C3%B3quia%20Imaculado%20Cora%C3%A7%C3%A3o%20De%20Maria!5e0!3m2!1spt-BR!2sbr!4v1767221664140!5m2!1spt-BR!2sbr"
+            width="100%" height="450" style="border:0; margin-bottom: 70px;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+          <div id="quote-container">
+            <div class="parallax-container ">
+              <div class="parallax-spacer">
+                <div class="parallax-quote parallax-img"></div>
+              </div>
+              <div class="quote container reveal active">
+                <i class="fa-solid fa-quote-left"
+                  style="font-size: 3.5rem; color: var(--tertiary-gold); margin-bottom: 40px; display: block; text-align: center;"></i>
+                <blockquote>
+                  "Por fim, o Meu Imaculado Coração triunfará."
+                </blockquote>
+                <div class="quote-author"
+                  style="margin-top: 40px; letter-spacing: 5px; color: var(--tertiary-gold); text-transform: uppercase; font-weight: bold; font-size: 1rem;">
+                  — Nossa Senhora de Fátima
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ornament-end reveal active">
+            <i class="fa-solid fa-leaf"></i>
+            <i class="fa-solid fa-cross" style="margin: 0 40px; font-size: 4rem;"></i>
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTEÚDO 2: HORÁRIOS (Inicialmente oculto) -->
+      <div id="content-horarios" class="content-category-wrapper" hidden>
+        <div class="content-margin">
+          <h2 class="content-wrapper-title">Horários Essenciais</h2>
+          <div class="content-wrapper">
+
+            <!-- Card Missas -->
+            <div class="card-sacrament" id="mass-hours-btn" data-action="open-mass">
+              <div class="card-body">
+                <h3 class="card-title"><i class="fa-solid fa-church"></i>Horários de Missas</h3>
+                <p class="card-content">Veja os horários costumeiros de missa da matriz e das capelas.</p>
+              </div>
+              <button>Ver horários</button>
+              <div class="card-footer">
+                <span class="card-footer-text">Horários sujeitos a alterações.</span>
+              </div>
+            </div>
+
+            <!-- Card Confissões -->
+            <div class="card-sacrament" id="special-mass-hours-btn" data-action="open-confession">
+              <div class="card-body">
+                <h3 class="card-title"><i class="fa-solid fa-cross"></i>Horários de Confissão</h3>
+                <p class="card-content">Horários em que o padre costuma atender confissões.</p>
+              </div>
+              <button>Ver horários</button>
+              <div class="card-footer">
+                <span class="card-footer-text">Sujeito a alterações conforme a agenda do sacerdote.</span>
+              </div>
+            </div>
+
+            <!-- Card Batismo -->
+            <div class="card-sacrament">
+              <div class="card-body">
+                <h3 class="card-title"><i class="fa-solid fa-water"></i>Horários de Adoração</h3>
+                <p class="card-content">Informações e requisitos para agendamento de batizados.</p>
+              </div>
+              <button>Ver horários</button>
+              <div class="card-footer">
+                <span class="card-footer-text">Fale com a secretaria</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTEÚDO 3: DEVOÇÕES (Inicialmente oculto) -->
+      <div id="content-devocoes" class="content-category-wrapper" hidden>
+        <div class="content-margin">
+          <h2 class="content-wrapper-title">Devoções</h2>
+          <div class="content-wrapper">
+            <p class="card-content content-wrapper--message">
+              Em breve, informações detalhadas sobre as devoções.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTEÚDO 4: PASTORAIS (Inicialmente oculto) -->
+      <div id="content-pastorais" class="content-category-wrapper" hidden>
+        <div class="content-margin">
+          <h2 class="content-wrapper-title">Pastorais</h2>
+          <div class="content-wrapper">
+            <p class="card-content content-wrapper--message">
+              Em breve, informações detalhadas sobre as Pastorais e como participar.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTEÚDO 5: MÍDIA (Inicialmente oculto) -->
+      <div id="content-midia" class="content-category-wrapper" hidden>
+        <div class="content-margin">
+          <h2 class="content-wrapper-title">Mídia e Redes Sociais</h2>
+          <div class="content-wrapper" id="youtube-videos">
+            <p class="card-content content-wrapper--message">
+              Carregando vídeos recentes do YouTube...
+            </p>
+            <!-- Vídeos serão inseridos aqui pelo JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTEÚDO 6: CONTATO (Inicialmente oculto) -->
+      <div id="content-contato" class="content-category-wrapper" hidden>
+        <div class="content-margin">
+          <h2 class="content-wrapper-title">Fale Conosco</h2>
+          <div class="content-wrapper">
+            <div class="contact-info content-wrapper--message">
+              <h3
+                style="font-family: 'Yeseva One', serif; font-size: 1.2rem; color: var(--primary-blue); margin-bottom: 10px;">
+                Secretaria Paroquial</h3>
+              <p style="margin-bottom: 5px;"><i class="fa-solid fa-phone"
+                  style="margin-right: 8px; color: var(--tertiary-gold);"></i> (62) 9999-0000</p>
+              <p style="margin-bottom: 5px;"><i class="fa-solid fa-envelope"
+                  style="margin-right: 8px; color: var(--tertiary-gold);"></i> contato@paroquiaicm.com.br</p>
+              <p><i class="fa-solid fa-location-dot" style="margin-right: 8px; color: var(--tertiary-gold);"></i> Rua
+                Principal, 100 - Centro, Nerópolis/GO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 6. RODAPÉ (FOOTER) -->
+  <footer hidden>
+    <p>&copy; 2025 Paróquia Imaculado Coração de Maria, Nerópolis - GO. Todos os direitos reservados.</p>
+    <img id="footer-logo-diocese" width="30px"
+      src="https://www.diocesedeanapolis.org.br/wp-content/uploads/2023/04/brasao_diocese_anapolis_1000x1318-777x1024.png"
+      alt="">
+  </footer>
+
+  <div class="modal-overlay" id="mass-hours-modal" hidden>
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 class="modal-title">Horários Habituais de Missa</h2>
+        <button type="button" class="close-btn" onclick="toggleModal('#mass-hours-modal')">
+          ×
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-content-group">
+          <h3>Matriz</h3>
+          <ul class="point-list">
+            <li>Domingo: 7h, 9h, 19h</li>
+            <li>Segunda: 6h30</li>
+            <li>Terça e Quinta: 19h</li>
+          </ul>
+        </div>
+        <div class="modal-content-group">
+          <h3>Capela Santo Antônio</h3>
+          <ul class="point-list">
+            <li>Quarta e Sexta: 19h</li>
+            <li>Sábado: 19h</li>
+          </ul>
+        </div>
+        <div class="modal-content-group">
+          <h3>Capela São Lázaro</h3>
+          <ul class="point-list">
+            <li>Sábado: 17h</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <p class="card-footer-text">
+          Horários sujeitos a
+          alterações.</p>
+        <button type="button" class="btn-primary" onclick="toggleModal('#mass-hours-modal')">
+          FECHAR
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="special-mass-hours-modal" hidden>
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 class="modal-title">Horários Habituais de Confissão</h2>
+        <button type="button" class="close-btn" onclick="toggleModal('#special-mass-hours-modal')">
+          ×
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-content-group">
+          <h3>Matriz</h3>
+          <ul class="point-list">
+            <li>Domingo, Terça e Quinta: 18h às 19h</li>
+          </ul>
+        </div>
+        <div class="modal-content-group">
+          <h3>Capela Santo Antônio</h3>
+          <ul class="point-list">
+            <li>Quarta e Sexta: 18h às 19h</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <p class="card-footer-text">
+          Sujeito a alterações conforme a agenda do sacerdote.
+        </p>
+        <button type="button" class="btn-primary" onclick="toggleModal('#special-mass-hours-modal')">
+          ENTENDI
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <button id="chevron-up-btn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" hidden>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="#e1be6c">
+      <path d="M6 15 L12 9 L18 15" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+
+  <script src="./script.js" defer></script>
+
+  <script src="./modals.js" defer></script>
+
+</body>
+
+</html>
