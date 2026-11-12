@@ -202,7 +202,7 @@ nav .tab-menu-content {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 
     overflow: hidden;
@@ -225,16 +225,16 @@ nav .tab-menu-content {
 }
 
 .mary-container {
-    position: absolute;
-    bottom: 0;
-
+    position: relative;
+    left: 50%;
     width: var(--mary-size);
     height: var(--mary-size);
-
     background-image: url(./Replacing_heart_in_image_fff8cbad.png);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    align-self: flex-start;
+    transform: translateX(-50%);
 }
 
 .clouds-container {
