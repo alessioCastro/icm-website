@@ -122,7 +122,7 @@ function setupHeaderObserver() {
 
     const observer = new IntersectionObserver(entries => {
         const heroVisible = entries[0].isIntersecting;
-        header.hidden = heroVisible;
+        heroVisible ? header.classList.remove('bg-colored') : header.classList.add('bg-colored');
         chevronUpBtn.hidden = heroVisible;
     }, { threshold: 0 });
 
@@ -377,39 +377,39 @@ const activeItems = new Set();
 let ticking = false;
 
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      activeItems.add(entry.target);
-    } else {
-      activeItems.delete(entry.target);
-    }
-  });
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            activeItems.add(entry.target);
+        } else {
+            activeItems.delete(entry.target);
+        }
+    });
 }, {
-  threshold: 0
+    threshold: 0
 });
 
 parallaxItems.forEach(item => observer.observe(item));
 
 function onScroll() {
-  if (!ticking) {
-    requestAnimationFrame(updateParallax);
-    ticking = true;
-  }
+    if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+    }
 }
 
 function updateParallax() {
-  activeItems.forEach(container => {
-    const img = container.querySelector('.parallax-img');
-    if (!img) return;
+    activeItems.forEach(container => {
+        const img = container.querySelector('.parallax-img');
+        if (!img) return;
 
-    const rect = container.getBoundingClientRect();
-    const distanceFromCenter =
-      rect.top + rect.height / 2 - window.innerHeight / 2;
+        const rect = container.getBoundingClientRect();
+        const distanceFromCenter =
+            rect.top + rect.height / 2 - window.innerHeight / 2;
 
-    img.style.transform = `translateY(${-distanceFromCenter * 0.3}px)`;
-  });
+        img.style.transform = `translateY(${-distanceFromCenter * 0.3}px)`;
+    });
 
-  ticking = false;
+    ticking = false;
 }
 
 window.addEventListener('scroll', onScroll, { passive: true });
