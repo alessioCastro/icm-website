@@ -187,6 +187,10 @@ nav .tab-menu-content {
 }
 
 .hero-zoom {
+    transform: translateX(var(--hero-offset-x, 0px));
+}
+
+.hero-zoom {
     backface-visibility: hidden;
 
     transform-origin: var(--transform-origin);
@@ -226,7 +230,6 @@ nav .tab-menu-content {
 
 .mary-container {
     position: relative;
-    left: 50%;
     width: var(--mary-size);
     height: var(--mary-size);
     background-image: url(./Replacing_heart_in_image_fff8cbad.png);
@@ -234,7 +237,6 @@ nav .tab-menu-content {
     background-size: contain;
     background-repeat: no-repeat;
     align-self: flex-start;
-    transform: translateX(-50%);
 }
 
 .clouds-container {
@@ -267,7 +269,7 @@ nav .tab-menu-content {
 }
 
 .hero-anim {
-    animation: zoomOut 7s cubic-bezier(.22, 1, .36, 1) forwards;
+    animation: zoomOut 70s cubic-bezier(.22, 1, .36, 1) forwards;
     animation-delay: 5s;
 }
 
@@ -290,7 +292,7 @@ nav .tab-menu-content {
 
 @keyframes zoomOut {
     from {
-        transform: scale(1);
+        transform: scale(1) translateX(var(--hero-offset-x, 0px));
     }
 
     to {
