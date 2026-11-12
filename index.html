@@ -33,24 +33,63 @@
   <meta name="theme-color" content="#b4d5e7">
 
 
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./styles.css">
 
 </head>
 
 <body class="scroll-lock">
 
-  <header hidden>
-    <img id="header-logo" src="./novo-logo-icm.webp" alt="">
-    <nav class="tab-menu">
-      <ul class="tab-menu-content">
-        <li><button class="nav tab tab-active" data-content="inicio">Início</button></li>
-        <li><button class="nav tab" data-content="horarios">Horários Essenciais</button></li>
-        <li><button class="nav tab" data-content="devocoes">Devoções</button></li>
-        <li><button class="nav tab" data-content="pastorais">Pastorais</button></li>
-        <li><button class="nav tab" data-content="midia">Mídia & Notícias</button></li>
-        <li><button class="nav tab" data-content="contato">Contato</button></li>
-      </ul>
+  <header class="bg-transparent bg-white/40 border border-white/60 shadow-inner">
+
+    <!-- LOGO BRANDING -->
+    <div class="flex items-center space-x-3 mr-[50px] shrink-0">
+      <div
+        class="w-12 h-12 rounded-full border border-navy-800/20 bg-white/80 flex items-center justify-center p-1 shadow-sm">
+        <!-- SVG Emblem Mary Icon -->
+        <img src="./novo-logo-icm.webp" alt="">
+      </div>
+      <div class="leading-tight">
+        <h1 class="font-cinzel font-bold text-navy-900 text-sm tracking-wider uppercase">Paróquia Imaculado</h1>
+        <h2 class="font-cinzel font-bold text-navy-900 text-sm tracking-wider uppercase">Coração de Maria</h2>
+        <p class="text-[10px] text-navy-900/70 font-semibold tracking-widest uppercase">Nerópolis - GO</p>
+      </div>
+    </div>
+
+    <!-- NAVIGATION LINKS -->
+    <nav
+      class="hidden md:flex items-center space-x-1 lg:space-x-2 bg-white/40 p-1.5 rounded-full border border-white/60 shadow-inner text-xs font-semibold uppercase tracking-wider text-navy-900">
+      <li><a href="#inicio"
+          class="tab tab-active text-white px-4 py-2 rounded-full transition duration-200 shadow-sm">Início</a></li>
+      <a href="#horarios" class="px-3.5 py-2 hover:bg-white/60 rounded-full transition duration-200">Horários</a>
+      <a href="#devocoes" class="px-3.5 py-2 hover:bg-white/60 rounded-full transition duration-200">Devoções</a>
+      <a href="#pastorais" class="px-3.5 py-2 hover:bg-white/60 rounded-full transition duration-200">Pastorais</a>
+      <a href="#midia" class="px-3.5 py-2 hover:bg-white/60 rounded-full transition duration-200">Mídia</a>
+      <a href="#noticias" class="px-3.5 py-2 hover:bg-white/60 rounded-full transition duration-200">Notícias</a>
+      <a href="#contato" class="px-3.5 py-2 hover:bg-white/60 rounded-full transition duration-200">Contato</a>
+      <button class="w-8 h-8 rounded-full flex items-center justify-center text-navy-900 hover:bg-white/80 transition">
+        <i class="fa-solid fa-magnifying-glass text-xs"></i>
+      </button>
     </nav>
+
+    <!-- MOBILE MENU BUTTON -->
+    <div class="md:hidden flex items-center">
+      <button id="mobile-menu-btn" class="p-2 rounded-md text-navy-900 hover:bg-white/50 focus:outline-none">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+
+    <!-- MOBILE MENU DROPDOWN -->
+    <div id="mobile-menu"
+      class="hidden md:hidden bg-white/95 backdrop-blur-md border-b border-gray-200 px-4 pt-2 pb-4 space-y-2 font-medium text-navy-900 text-sm">
+      <a href="#inicio" class="block px-3 py-2 rounded-md bg-navy-800 text-white font-semibold">Início</a>
+      <a href="#horarios" class="block px-3 py-2 rounded-md hover:bg-gray-100">Horários</a>
+      <a href="#devocoes" class="block px-3 py-2 rounded-md hover:bg-gray-100">Devoções</a>
+      <a href="#pastorais" class="block px-3 py-2 rounded-md hover:bg-gray-100">Pastorais</a>
+      <a href="#midia" class="block px-3 py-2 rounded-md hover:bg-gray-100">Mídia</a>
+      <a href="#noticias" class="block px-3 py-2 rounded-md hover:bg-gray-100">Notícias</a>
+      <a href="#contato" class="block px-3 py-2 rounded-md hover:bg-gray-100">Contato</a>
+    </div>
   </header>
 
   <!-- HERO -->
@@ -60,11 +99,7 @@
         <div id="lock-overlay"></div>
 
         <div class="mary-container">
-          <img src="./novo-logo-icm.png_20153fda.png" alt="" style="position: absolute;
-    top: 57.5%;
-    left: 51.5%;
-    width: 140px;
-    transform: translate(-50%, -50%);">
+
           <img class="logo" src="./novo-logo-icm.webp" alt="">
           <!-- <div class="clouds-container"></div> -->
         </div>
