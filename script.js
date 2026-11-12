@@ -146,7 +146,7 @@ function setupAfterInitialAnimation() {
         ? 'scale(1)'
         : 'scale(calc(1 / var(--hero-scale)))';
 
-    enableParallax(scale);
+    //enableParallax(scale);
     setupHeaderObserver();
 
     if (isNewSession) return repairHeroTitleSharpness();
@@ -413,3 +413,21 @@ function updateParallax() {
 }
 
 window.addEventListener('scroll', onScroll, { passive: true });
+
+function centerMaryContainer() {
+    const heroWrapper = document.querySelector('.hero-wrapper');
+    const maryContainer = document.querySelector('.mary-container');
+
+    if (!heroWrapper || !maryContainer) return;
+
+    const maryRect = maryContainer.getBoundingClientRect();
+    const viewportCenter = window.innerWidth / 2;
+    const maryCenter = maryRect.left + maryRect.width / 2;
+
+    const offset = viewportCenter - maryCenter;
+
+    heroWrapper.style.setProperty('--hero-offset-x', `${offset}px`);
+}
+
+window.addEventListener('load', centerMaryContainer);
+window.addEventListener('resize', centerMaryContainer);
