@@ -92,20 +92,26 @@ header {
     z-index: 999;
 
     position: fixed;
-    left: 0;
-    right: 0;
+    top: 10px;
+    left: 50%;
+    right: 50%;
 
-    border-bottom: 2px solid #ddd;
+    border-radius: calc(99px + 5%);
+
     padding: 0 calc(env(safe-area-inset-left) - 20px);
-    padding-top: 1vw;
+    padding-left: 40px;
 
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: max-content;
 
     display: flex;
     align-items: center;
+    justify-content: center;
 
-    overflow: hidden;
+    transform: translateX(-50%);
+}
+
+header.bg-colored {
+    background-color: var(--bg);
 }
 
 .header-group {
@@ -270,6 +276,12 @@ nav .tab-menu-content {
     animation-delay: 5s;
 }
 
+.logo.decrease-opacity-anim {
+    animation:
+        decreaseOpacity 7s cubic-bezier(.22, 1, .36, 1) 5s forwards,
+        enlargeLogo 5s cubic-bezier(.22, 1, .36, 1) 3s forwards;
+}
+
 .increase-opacity-anim {
     opacity: 0;
     animation: increaseOpacity 2s forwards;
@@ -303,6 +315,16 @@ nav .tab-menu-content {
 
     to {
         opacity: 1;
+    }
+}
+
+@keyframes enlargeLogo {
+    from {
+        transform: translate(-50%, -50%) scale(calc(1 / var(--hero-scale)));
+    }
+
+    to {
+        transform: translate(-50%, -52%) scale(calc(3 / var(--hero-scale)));
     }
 }
 
@@ -488,12 +510,8 @@ footer p {
 }
 
 .tab {
-    border-bottom: 2px solid transparent;
-    padding: 0.6rem 0.5rem;
-
     color: var(--text-light);
 
-    font-size: 1rem;
     font-weight: 600;
 
     text-transform: uppercase;
@@ -511,10 +529,8 @@ footer p {
 }
 
 .tab-active {
-    border-bottom-color: var(--tertiary-gold);
-    color: var(--primary-blue);
-
-    cursor: default;
+    background: var(--primary-blue);
+    color: white;
 }
 
 .tab:not(.tab-active):hover {
